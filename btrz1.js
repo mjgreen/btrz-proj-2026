@@ -2,7 +2,7 @@
  * Btrz1 *
  **************/
 
-import { core, data, sound, util, visual, hardware } from './lib/psychojs-2025.1.1.js';
+import { core, data, sound, util, visual, hardware } from './lib/psychojs-2025.2.4.js';
 const { PsychoJS } = core;
 const { TrialHandler, MultiStairHandler } = data;
 const { Scheduler } = util;
@@ -50,10 +50,14 @@ flowScheduler.add(experimentInit);
 flowScheduler.add(preRoutineBegin());
 flowScheduler.add(preRoutineEachFrame());
 flowScheduler.add(preRoutineEnd());
-const trialsLoopScheduler = new Scheduler(psychoJS);
-flowScheduler.add(trialsLoopBegin(trialsLoopScheduler));
-flowScheduler.add(trialsLoopScheduler);
-flowScheduler.add(trialsLoopEnd);
+const blocksLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(blocksLoopBegin(blocksLoopScheduler));
+flowScheduler.add(blocksLoopScheduler);
+flowScheduler.add(blocksLoopEnd);
+
+
+
+
 
 
 flowScheduler.add(quitPsychoJS, 'Thank you for your patience.', true);
@@ -66,56 +70,151 @@ psychoJS.start({
   expInfo: expInfo,
   resources: [
     // resources:
-    {'name': 'trial_list_mapping_1_block_1.csv', 'path': 'trial_list_mapping_1_block_1.csv'},
-    {'name': 'WashingDishes.mp4', 'path': 'WashingDishes.mp4'},
-    {'name': 'Sp009.jpg', 'path': 'Sp009.jpg'},
-    {'name': 'GrassTrimmingII.mp4', 'path': 'GrassTrimmingII.mp4'},
-    {'name': 'A127.jpg', 'path': 'A127.jpg'},
-    {'name': 'HorseTrail.mp4', 'path': 'HorseTrail.mp4'},
-    {'name': 'OASIS_I274.jpg', 'path': 'OASIS_I274.jpg'},
-    {'name': 'Spinning.mp4', 'path': 'Spinning.mp4'},
-    {'name': 'Sp075.jpg', 'path': 'Sp075.jpg'},
-    {'name': 'ManBikeRiding.mp4', 'path': 'ManBikeRiding.mp4'},
-    {'name': 'A042.jpg', 'path': 'A042.jpg'},
-    {'name': 'Hairrollers.mp4', 'path': 'Hairrollers.mp4'},
-    {'name': 'A123.jpg', 'path': 'A123.jpg'},
-    {'name': 'WoodchoppingDog.mp4', 'path': 'WoodchoppingDog.mp4'},
-    {'name': 'Sp020.jpg', 'path': 'Sp020.jpg'},
-    {'name': 'HarmonicaStanding.mp4', 'path': 'HarmonicaStanding.mp4'},
-    {'name': 'A011.jpg', 'path': 'A011.jpg'},
-    {'name': 'WindowCleaner.mp4', 'path': 'WindowCleaner.mp4'},
-    {'name': 'N092.bmp', 'path': 'N092.bmp'},
-    {'name': 'Harmonica.mp4', 'path': 'Harmonica.mp4'},
-    {'name': 'N040.bmp', 'path': 'N040.bmp'},
-    {'name': 'PoolJumpingOutdoors.mp4', 'path': 'PoolJumpingOutdoors.mp4'},
-    {'name': 'N017.bmp', 'path': 'N017.bmp'},
-    {'name': 'GiftWrapping.mp4', 'path': 'GiftWrapping.mp4'},
-    {'name': 'N031.bmp', 'path': 'N031.bmp'},
-    {'name': 'WhaleWatching.mp4', 'path': 'WhaleWatching.mp4'},
-    {'name': 'N082.bmp', 'path': 'N082.bmp'},
-    {'name': 'Bicycle.mp4', 'path': 'Bicycle.mp4'},
-    {'name': 'N020.bmp', 'path': 'N020.bmp'},
-    {'name': 'CarDriving.mp4', 'path': 'CarDriving.mp4'},
-    {'name': 'N004.bmp', 'path': 'N004.bmp'},
-    {'name': 'HairdresserDonation.mp4', 'path': 'HairdresserDonation.mp4'},
-    {'name': 'N047.bmp', 'path': 'N047.bmp'},
-    {'name': 'GrandmaJumping.mp4', 'path': 'GrandmaJumping.mp4'},
-    {'name': 'P077.jpg', 'path': 'P077.jpg'},
-    {'name': 'WashingFace.mp4', 'path': 'WashingFace.mp4'},
-    {'name': 'P081.jpg', 'path': 'P081.jpg'},
-    {'name': 'GrassTrimming.mp4', 'path': 'GrassTrimming.mp4'},
-    {'name': 'P113.jpg', 'path': 'P113.jpg'},
-    {'name': 'Pipes.mp4', 'path': 'Pipes.mp4'},
-    {'name': 'P122.jpg', 'path': 'P122.jpg'},
-    {'name': 'Tennis.mp4', 'path': 'Tennis.mp4'},
-    {'name': 'P078.jpg', 'path': 'P078.jpg'},
-    {'name': 'PianoYanni.mp4', 'path': 'PianoYanni.mp4'},
-    {'name': 'P099.jpg', 'path': 'P099.jpg'},
-    {'name': 'CookingDadDaughter.mp4', 'path': 'CookingDadDaughter.mp4'},
-    {'name': 'P079.jpg', 'path': 'P079.jpg'},
-    {'name': 'BabyTeeth.mp4', 'path': 'BabyTeeth.mp4'},
-    {'name': 'I132.jpg', 'path': 'I132.jpg'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
+    {'name': 'N003.bmp', 'path': 'N003.bmp'},
+    {'name': 'N004.bmp', 'path': 'N004.bmp'},
+    {'name': 'N006.bmp', 'path': 'N006.bmp'},
+    {'name': 'N009.bmp', 'path': 'N009.bmp'},
+    {'name': 'N010.bmp', 'path': 'N010.bmp'},
+    {'name': 'N011.bmp', 'path': 'N011.bmp'},
+    {'name': 'N014.bmp', 'path': 'N014.bmp'},
+    {'name': 'N017.bmp', 'path': 'N017.bmp'},
+    {'name': 'N020.bmp', 'path': 'N020.bmp'},
+    {'name': 'N024.bmp', 'path': 'N024.bmp'},
+    {'name': 'N026.bmp', 'path': 'N026.bmp'},
+    {'name': 'N028.bmp', 'path': 'N028.bmp'},
+    {'name': 'N031.bmp', 'path': 'N031.bmp'},
+    {'name': 'N036.bmp', 'path': 'N036.bmp'},
+    {'name': 'N040.bmp', 'path': 'N040.bmp'},
+    {'name': 'N047.bmp', 'path': 'N047.bmp'},
+    {'name': 'N061.bmp', 'path': 'N061.bmp'},
+    {'name': 'N067.bmp', 'path': 'N067.bmp'},
+    {'name': 'N070.bmp', 'path': 'N070.bmp'},
+    {'name': 'N081.bmp', 'path': 'N081.bmp'},
+    {'name': 'N082.bmp', 'path': 'N082.bmp'},
+    {'name': 'N091.bmp', 'path': 'N091.bmp'},
+    {'name': 'N092.bmp', 'path': 'N092.bmp'},
+    {'name': 'N102.bmp', 'path': 'N102.bmp'},
+    {'name': 'A011.jpg', 'path': 'A011.jpg'},
+    {'name': 'A038.jpg', 'path': 'A038.jpg'},
+    {'name': 'A040.jpg', 'path': 'A040.jpg'},
+    {'name': 'A042.jpg', 'path': 'A042.jpg'},
+    {'name': 'A062.jpg', 'path': 'A062.jpg'},
+    {'name': 'A115.jpg', 'path': 'A115.jpg'},
+    {'name': 'A123.jpg', 'path': 'A123.jpg'},
+    {'name': 'A127.jpg', 'path': 'A127.jpg'},
+    {'name': 'I132.jpg', 'path': 'I132.jpg'},
+    {'name': 'I169.jpg', 'path': 'I169.jpg'},
+    {'name': 'OASIS_I22.jpg', 'path': 'OASIS_I22.jpg'},
+    {'name': 'OASIS_I24.jpg', 'path': 'OASIS_I24.jpg'},
+    {'name': 'OASIS_I133.jpg', 'path': 'OASIS_I133.jpg'},
+    {'name': 'OASIS_I134.jpg', 'path': 'OASIS_I134.jpg'},
+    {'name': 'OASIS_I166.jpg', 'path': 'OASIS_I166.jpg'},
+    {'name': 'OASIS_I167.jpg', 'path': 'OASIS_I167.jpg'},
+    {'name': 'OASIS_I252.jpg', 'path': 'OASIS_I252.jpg'},
+    {'name': 'OASIS_I254.jpg', 'path': 'OASIS_I254.jpg'},
+    {'name': 'OASIS_I256.jpg', 'path': 'OASIS_I256.jpg'},
+    {'name': 'OASIS_I273.jpg', 'path': 'OASIS_I273.jpg'},
+    {'name': 'OASIS_I274.jpg', 'path': 'OASIS_I274.jpg'},
+    {'name': 'OASIS_I281.jpg', 'path': 'OASIS_I281.jpg'},
+    {'name': 'OASIS_I282.jpg', 'path': 'OASIS_I282.jpg'},
+    {'name': 'P060.jpg', 'path': 'P060.jpg'},
+    {'name': 'P066.jpg', 'path': 'P066.jpg'},
+    {'name': 'P073.jpg', 'path': 'P073.jpg'},
+    {'name': 'P075.jpg', 'path': 'P075.jpg'},
+    {'name': 'P077.jpg', 'path': 'P077.jpg'},
+    {'name': 'P078.jpg', 'path': 'P078.jpg'},
+    {'name': 'P079.jpg', 'path': 'P079.jpg'},
+    {'name': 'P080.jpg', 'path': 'P080.jpg'},
+    {'name': 'P081.jpg', 'path': 'P081.jpg'},
+    {'name': 'P082.jpg', 'path': 'P082.jpg'},
+    {'name': 'P083.jpg', 'path': 'P083.jpg'},
+    {'name': 'P095.jpg', 'path': 'P095.jpg'},
+    {'name': 'P096.jpg', 'path': 'P096.jpg'},
+    {'name': 'P099.jpg', 'path': 'P099.jpg'},
+    {'name': 'P101.jpg', 'path': 'P101.jpg'},
+    {'name': 'P113.jpg', 'path': 'P113.jpg'},
+    {'name': 'P114.jpg', 'path': 'P114.jpg'},
+    {'name': 'P122.jpg', 'path': 'P122.jpg'},
+    {'name': 'Sn079.jpg', 'path': 'Sn079.jpg'},
+    {'name': 'Sp009.jpg', 'path': 'Sp009.jpg'},
+    {'name': 'Sp020.jpg', 'path': 'Sp020.jpg'},
+    {'name': 'Sp051.jpg', 'path': 'Sp051.jpg'},
+    {'name': 'Sp075.jpg', 'path': 'Sp075.jpg'},
+    {'name': 'Sp125.jpg', 'path': 'Sp125.jpg'},
+    {'name': 'Sp126.jpg', 'path': 'Sp126.jpg'},
+    {'name': 'Woodpolishing.mp4', 'path': 'Woodpolishing.mp4'},
+    {'name': 'WoodchoppingSnow.mp4', 'path': 'WoodchoppingSnow.mp4'},
+    {'name': 'WoodchoppingDog.mp4', 'path': 'WoodchoppingDog.mp4'},
+    {'name': 'WomanCooking.mp4', 'path': 'WomanCooking.mp4'},
+    {'name': 'WindowCleanersCostumes.mp4', 'path': 'WindowCleanersCostumes.mp4'},
+    {'name': 'WindowCleaner.mp4', 'path': 'WindowCleaner.mp4'},
+    {'name': 'WhaleWatching.mp4', 'path': 'WhaleWatching.mp4'},
+    {'name': 'Weightlifing.mp4', 'path': 'Weightlifing.mp4'},
+    {'name': 'WashingFace.mp4', 'path': 'WashingFace.mp4'},
+    {'name': 'WashingDishes.mp4', 'path': 'WashingDishes.mp4'},
+    {'name': 'WashingBedsheets.mp4', 'path': 'WashingBedsheets.mp4'},
+    {'name': 'WalkingDog.mp4', 'path': 'WalkingDog.mp4'},
+    {'name': 'Vaccum.mp4', 'path': 'Vaccum.mp4'},
+    {'name': 'Tennis.mp4', 'path': 'Tennis.mp4'},
+    {'name': 'Spinning.mp4', 'path': 'Spinning.mp4'},
+    {'name': 'SnowShovelling.mp4', 'path': 'SnowShovelling.mp4'},
+    {'name': 'ShoeCleaningII.mp4', 'path': 'ShoeCleaningII.mp4'},
+    {'name': 'ShoeCleaning.mp4', 'path': 'ShoeCleaning.mp4'},
+    {'name': 'RockClimbingII.mp4', 'path': 'RockClimbingII.mp4'},
+    {'name': 'RockClimbing.mp4', 'path': 'RockClimbing.mp4'},
+    {'name': 'PoolJumpingOutdoors.mp4', 'path': 'PoolJumpingOutdoors.mp4'},
+    {'name': 'PoolJumping.mp4', 'path': 'PoolJumping.mp4'},
+    {'name': 'Pipes.mp4', 'path': 'Pipes.mp4'},
+    {'name': 'PianoYanni.mp4', 'path': 'PianoYanni.mp4'},
+    {'name': 'PianoRecital.mp4', 'path': 'PianoRecital.mp4'},
+    {'name': 'Nails.mp4', 'path': 'Nails.mp4'},
+    {'name': 'Motorbikes.mp4', 'path': 'Motorbikes.mp4'},
+    {'name': 'ManBikeRiding.mp4', 'path': 'ManBikeRiding.mp4'},
+    {'name': 'MakeupArtistGirl.mp4', 'path': 'MakeupArtistGirl.mp4'},
+    {'name': 'MakeupArtist.mp4', 'path': 'MakeupArtist.mp4'},
+    {'name': 'KidswithDad.mp4', 'path': 'KidswithDad.mp4'},
+    {'name': 'Interview.mp4', 'path': 'Interview.mp4'},
+    {'name': 'HorseTrail.mp4', 'path': 'HorseTrail.mp4'},
+    {'name': 'HorseRiding.mp4', 'path': 'HorseRiding.mp4'},
+    {'name': 'HighJump.mp4', 'path': 'HighJump.mp4'},
+    {'name': 'HarmonicaStanding.mp4', 'path': 'HarmonicaStanding.mp4'},
+    {'name': 'Harmonica.mp4', 'path': 'Harmonica.mp4'},
+    {'name': 'HairStyling.mp4', 'path': 'HairStyling.mp4'},
+    {'name': 'Hairrollers.mp4', 'path': 'Hairrollers.mp4'},
+    {'name': 'HairMannequin.mp4', 'path': 'HairMannequin.mp4'},
+    {'name': 'HairdresserDonation.mp4', 'path': 'HairdresserDonation.mp4'},
+    {'name': 'GymnasticsChina.mp4', 'path': 'GymnasticsChina.mp4'},
+    {'name': 'GuySmoking.mp4', 'path': 'GuySmoking.mp4'},
+    {'name': 'GrassTrimmingII.mp4', 'path': 'GrassTrimmingII.mp4'},
+    {'name': 'GrassTrimming.mp4', 'path': 'GrassTrimming.mp4'},
+    {'name': 'GrandmaJumping.mp4', 'path': 'GrandmaJumping.mp4'},
+    {'name': 'GiftWrapping.mp4', 'path': 'GiftWrapping.mp4'},
+    {'name': 'DrivingCar.mp4', 'path': 'DrivingCar.mp4'},
+    {'name': 'DogWalking.mp4', 'path': 'DogWalking.mp4'},
+    {'name': 'DiscusThrow.mp4', 'path': 'DiscusThrow.mp4'},
+    {'name': 'DancingGuy.mp4', 'path': 'DancingGuy.mp4'},
+    {'name': 'DancingGirl.mp4', 'path': 'DancingGirl.mp4'},
+    {'name': 'CookingShowII.mp4', 'path': 'CookingShowII.mp4'},
+    {'name': 'CookingShow.mp4', 'path': 'CookingShow.mp4'},
+    {'name': 'CookingPumpkin.mp4', 'path': 'CookingPumpkin.mp4'},
+    {'name': 'CookingMan.mp4', 'path': 'CookingMan.mp4'},
+    {'name': 'CookingDadDaughter.mp4', 'path': 'CookingDadDaughter.mp4'},
+    {'name': 'CityWalking.mp4', 'path': 'CityWalking.mp4'},
+    {'name': 'ChildHockey.mp4', 'path': 'ChildHockey.mp4'},
+    {'name': 'CarDriving.mp4', 'path': 'CarDriving.mp4'},
+    {'name': 'Canoe.mp4', 'path': 'Canoe.mp4'},
+    {'name': 'Boysplaying.mp4', 'path': 'Boysplaying.mp4'},
+    {'name': 'BicycleBoy.mp4', 'path': 'BicycleBoy.mp4'},
+    {'name': 'Bicycle.mp4', 'path': 'Bicycle.mp4'},
+    {'name': 'Beard.mp4', 'path': 'Beard.mp4'},
+    {'name': 'Basketball.mp4', 'path': 'Basketball.mp4'},
+    {'name': 'Ballett.mp4', 'path': 'Ballett.mp4'},
+    {'name': 'Ballerina.mp4', 'path': 'Ballerina.mp4'},
+    {'name': 'Backflips.mp4', 'path': 'Backflips.mp4'},
+    {'name': 'BabyTree.mp4', 'path': 'BabyTree.mp4'},
+    {'name': 'BabyTeeth.mp4', 'path': 'BabyTeeth.mp4'},
+    {'name': 'BabyCooking.mp4', 'path': 'BabyCooking.mp4'},
   ]
 });
 
@@ -128,7 +227,7 @@ async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
   expInfo['expName'] = expName;
-  expInfo['psychopyVersion'] = '2025.1.1';
+  expInfo['psychopyVersion'] = '2025.2.4';
   expInfo['OS'] = window.navigator.platform;
 
 
@@ -172,6 +271,13 @@ var trial_list_mapping_3;
 var trial_list_mapping_3_block_1;
 var trial_list_mapping_3_block_2;
 var trial_list_mapping_3_block_3;
+var nTrials;
+var trialIndex;
+var blockIndex;
+var blocks;
+var block_doClock;
+var trialsList;
+var trial_doClock;
 var trialClock;
 var image;
 var movieClock;
@@ -182,14 +288,21 @@ async function experimentInit() {
   // Initialize components for Routine "pre"
   preClock = new util.Clock();
   // Run 'Begin Experiment' code from code
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // 0 ≤ j ≤ i
+      [array[i], array[j]] = [array[j], array[i]];   // swap
+    }
+    return array;
+  }
   negative_pictures = ["A011.jpg", "A038.jpg", "A040.jpg", "A042.jpg", "A062.jpg", "A115.jpg", "A123.jpg", "A127.jpg", "I169.jpg", "OASIS_I166.jpg", "OASIS_I167.jpg", "OASIS_I22.jpg", "OASIS_I24.jpg", "OASIS_I273.jpg", "OASIS_I274.jpg", "OASIS_I281.jpg", "OASIS_I282.jpg", "Sn079.jpg", "Sp009.jpg", "Sp020.jpg", "Sp051.jpg", "Sp075.jpg", "Sp125.jpg", "Sp126.jpg"];
   neutral_pictures = ["N003.bmp", "N004.bmp", "N006.bmp", "N009.bmp", "N010.bmp", "N011.bmp", "N014.bmp", "N017.bmp", "N020.bmp", "N024.bmp", "N026.bmp", "N028.bmp", "N031.bmp", "N036.bmp", "N040.bmp", "N047.bmp", "N061.bmp", "N067.bmp", "N070.bmp", "N081.bmp", "N082.bmp", "N091.bmp", "N092.bmp", "N102.bmp"];
   positive_pictures = ["I132.jpg", "OASIS_I133.jpg", "OASIS_I134.jpg", "OASIS_I252.jpg", "OASIS_I254.jpg", "OASIS_I256.jpg", "P060.jpg", "P066.jpg", "P073.jpg", "P075.jpg", "P077.jpg", "P078.jpg", "P079.jpg", "P080.jpg", "P081.jpg", "P082.jpg", "P083.jpg", "P095.jpg", "P096.jpg", "P099.jpg", "P101.jpg", "P113.jpg", "P114.jpg", "P122.jpg"];
   video_filenames = ["BabyCooking.mp4", "BabyTeeth.mp4", "BabyTree.mp4", "Backflips.mp4", "Ballerina.mp4", "Ballett.mp4", "Basketball.mp4", "Beard.mp4", "Bicycle.mp4", "BicycleBoy.mp4", "Boysplaying.mp4", "Canoe.mp4", "CarDriving.mp4", "ChildHockey.mp4", "CityWalking.mp4", "CookingDadDaughter.mp4", "CookingMan.mp4", "CookingPumpkin.mp4", "CookingShow.mp4", "CookingShowII.mp4", "DancingGirl.mp4", "DancingGuy.mp4", "DiscusThrow.mp4", "DogWalking.mp4", "DrivingCar.mp4", "GiftWrapping.mp4", "GrandmaJumping.mp4", "GrassTrimming.mp4", "GrassTrimmingII.mp4", "GuySmoking.mp4", "GymnasticsChina.mp4", "HairMannequin.mp4", "HairStyling.mp4", "HairdresserDonation.mp4", "Hairrollers.mp4", "Harmonica.mp4", "HarmonicaStanding.mp4", "HighJump.mp4", "HorseRiding.mp4", "HorseTrail.mp4", "Interview.mp4", "KidswithDad.mp4", "MakeupArtist.mp4", "MakeupArtistGirl.mp4", "ManBikeRiding.mp4", "Motorbikes.mp4", "Nails.mp4", "PianoRecital.mp4", "PianoYanni.mp4", "Pipes.mp4", "PoolJumping.mp4", "PoolJumpingOutdoors.mp4", "RockClimbing.mp4", "RockClimbingII.mp4", "ShoeCleaning.mp4", "ShoeCleaningII.mp4", "SnowShovelling.mp4", "Spinning.mp4", "Tennis.mp4", "Vaccum.mp4", "WalkingDog.mp4", "WashingBedsheets.mp4", "WashingDishes.mp4", "WashingFace.mp4", "Weightlifing.mp4", "WhaleWatching.mp4", "WindowCleaner.mp4", "WindowCleanersCostumes.mp4", "WomanCooking.mp4", "WoodchoppingDog.mp4", "WoodchoppingSnow.mp4", "Woodpolishing.mp4"];
-  Math.random.shuffle(negative_pictures);
-  Math.random.shuffle(neutral_pictures);
-  Math.random.shuffle(positive_pictures);
-  Math.random.shuffle(video_filenames);
+  shuffle(negative_pictures);
+  shuffle(neutral_pictures);
+  shuffle(positive_pictures);
+  shuffle(video_filenames);
   video_set_a = video_filenames.slice(0, 24);
   video_set_b = video_filenames.slice(24, 48);
   video_set_c = video_filenames.slice(48, 72);
@@ -205,7 +318,35 @@ async function experimentInit() {
   trial_list_mapping_3_block_1 = [{"vid": video_set_a[0], "img": positive_pictures[0], "valence": "positive", "n": 1, "list": 3}, {"vid": video_set_a[1], "img": positive_pictures[1], "valence": "positive", "n": 2, "list": 3}, {"vid": video_set_a[2], "img": positive_pictures[2], "valence": "positive", "n": 3, "list": 3}, {"vid": video_set_a[3], "img": positive_pictures[3], "valence": "positive", "n": 4, "list": 3}, {"vid": video_set_a[4], "img": positive_pictures[4], "valence": "positive", "n": 5, "list": 3}, {"vid": video_set_a[5], "img": positive_pictures[5], "valence": "positive", "n": 6, "list": 3}, {"vid": video_set_a[6], "img": positive_pictures[6], "valence": "positive", "n": 7, "list": 3}, {"vid": video_set_a[7], "img": positive_pictures[7], "valence": "positive", "n": 8, "list": 3}, {"vid": video_set_b[0], "img": negative_pictures[0], "valence": "negative", "n": 25, "list": 3}, {"vid": video_set_b[1], "img": negative_pictures[1], "valence": "negative", "n": 26, "list": 3}, {"vid": video_set_b[2], "img": negative_pictures[2], "valence": "negative", "n": 27, "list": 3}, {"vid": video_set_b[3], "img": negative_pictures[3], "valence": "negative", "n": 28, "list": 3}, {"vid": video_set_b[4], "img": negative_pictures[4], "valence": "negative", "n": 29, "list": 3}, {"vid": video_set_b[5], "img": negative_pictures[5], "valence": "negative", "n": 30, "list": 3}, {"vid": video_set_b[6], "img": negative_pictures[6], "valence": "negative", "n": 31, "list": 3}, {"vid": video_set_b[7], "img": negative_pictures[7], "valence": "negative", "n": 32, "list": 3}, {"vid": video_set_c[0], "img": neutral_pictures[0], "valence": "neutral", "n": 49, "list": 3}, {"vid": video_set_c[1], "img": neutral_pictures[1], "valence": "neutral", "n": 50, "list": 3}, {"vid": video_set_c[2], "img": neutral_pictures[2], "valence": "neutral", "n": 51, "list": 3}, {"vid": video_set_c[3], "img": neutral_pictures[3], "valence": "neutral", "n": 52, "list": 3}, {"vid": video_set_c[4], "img": neutral_pictures[4], "valence": "neutral", "n": 53, "list": 3}, {"vid": video_set_c[5], "img": neutral_pictures[5], "valence": "neutral", "n": 54, "list": 3}, {"vid": video_set_c[6], "img": neutral_pictures[6], "valence": "neutral", "n": 55, "list": 3}, {"vid": video_set_c[7], "img": neutral_pictures[7], "valence": "neutral", "n": 56, "list": 3}];
   trial_list_mapping_3_block_2 = [{"vid": video_set_a[8], "img": positive_pictures[8], "valence": "positive", "n": 9, "list": 3}, {"vid": video_set_a[9], "img": positive_pictures[9], "valence": "positive", "n": 10, "list": 3}, {"vid": video_set_a[10], "img": positive_pictures[10], "valence": "positive", "n": 11, "list": 3}, {"vid": video_set_a[11], "img": positive_pictures[11], "valence": "positive", "n": 12, "list": 3}, {"vid": video_set_a[12], "img": positive_pictures[12], "valence": "positive", "n": 13, "list": 3}, {"vid": video_set_a[13], "img": positive_pictures[13], "valence": "positive", "n": 14, "list": 3}, {"vid": video_set_a[14], "img": positive_pictures[14], "valence": "positive", "n": 15, "list": 3}, {"vid": video_set_a[15], "img": positive_pictures[15], "valence": "positive", "n": 16, "list": 3}, {"vid": video_set_b[8], "img": negative_pictures[8], "valence": "negative", "n": 33, "list": 3}, {"vid": video_set_b[9], "img": negative_pictures[9], "valence": "negative", "n": 34, "list": 3}, {"vid": video_set_b[10], "img": negative_pictures[10], "valence": "negative", "n": 35, "list": 3}, {"vid": video_set_b[11], "img": negative_pictures[11], "valence": "negative", "n": 36, "list": 3}, {"vid": video_set_b[12], "img": negative_pictures[12], "valence": "negative", "n": 37, "list": 3}, {"vid": video_set_b[13], "img": negative_pictures[13], "valence": "negative", "n": 38, "list": 3}, {"vid": video_set_b[14], "img": negative_pictures[14], "valence": "negative", "n": 39, "list": 3}, {"vid": video_set_b[15], "img": negative_pictures[15], "valence": "negative", "n": 40, "list": 3}, {"vid": video_set_c[8], "img": neutral_pictures[8], "valence": "neutral", "n": 57, "list": 3}, {"vid": video_set_c[9], "img": neutral_pictures[9], "valence": "neutral", "n": 58, "list": 3}, {"vid": video_set_c[10], "img": neutral_pictures[10], "valence": "neutral", "n": 59, "list": 3}, {"vid": video_set_c[11], "img": neutral_pictures[11], "valence": "neutral", "n": 60, "list": 3}, {"vid": video_set_c[12], "img": neutral_pictures[12], "valence": "neutral", "n": 61, "list": 3}, {"vid": video_set_c[13], "img": neutral_pictures[13], "valence": "neutral", "n": 62, "list": 3}, {"vid": video_set_c[14], "img": neutral_pictures[14], "valence": "neutral", "n": 63, "list": 3}, {"vid": video_set_c[15], "img": neutral_pictures[15], "valence": "neutral", "n": 64, "list": 3}];
   trial_list_mapping_3_block_3 = [{"vid": video_set_a[16], "img": positive_pictures[16], "valence": "positive", "n": 17, "list": 3}, {"vid": video_set_a[17], "img": positive_pictures[17], "valence": "positive", "n": 18, "list": 3}, {"vid": video_set_a[18], "img": positive_pictures[18], "valence": "positive", "n": 19, "list": 3}, {"vid": video_set_a[19], "img": positive_pictures[19], "valence": "positive", "n": 20, "list": 3}, {"vid": video_set_a[20], "img": positive_pictures[20], "valence": "positive", "n": 21, "list": 3}, {"vid": video_set_a[21], "img": positive_pictures[21], "valence": "positive", "n": 22, "list": 3}, {"vid": video_set_a[22], "img": positive_pictures[22], "valence": "positive", "n": 23, "list": 3}, {"vid": video_set_a[23], "img": positive_pictures[23], "valence": "positive", "n": 24, "list": 3}, {"vid": video_set_b[16], "img": negative_pictures[16], "valence": "negative", "n": 41, "list": 3}, {"vid": video_set_b[17], "img": negative_pictures[17], "valence": "negative", "n": 42, "list": 3}, {"vid": video_set_b[18], "img": negative_pictures[18], "valence": "negative", "n": 43, "list": 3}, {"vid": video_set_b[19], "img": negative_pictures[19], "valence": "negative", "n": 44, "list": 3}, {"vid": video_set_b[20], "img": negative_pictures[20], "valence": "negative", "n": 45, "list": 3}, {"vid": video_set_b[21], "img": negative_pictures[21], "valence": "negative", "n": 46, "list": 3}, {"vid": video_set_b[22], "img": negative_pictures[22], "valence": "negative", "n": 47, "list": 3}, {"vid": video_set_b[23], "img": negative_pictures[23], "valence": "negative", "n": 48, "list": 3}, {"vid": video_set_c[16], "img": neutral_pictures[16], "valence": "neutral", "n": 65, "list": 3}, {"vid": video_set_c[17], "img": neutral_pictures[17], "valence": "neutral", "n": 66, "list": 3}, {"vid": video_set_c[18], "img": neutral_pictures[18], "valence": "neutral", "n": 67, "list": 3}, {"vid": video_set_c[19], "img": neutral_pictures[19], "valence": "neutral", "n": 68, "list": 3}, {"vid": video_set_c[20], "img": neutral_pictures[20], "valence": "neutral", "n": 69, "list": 3}, {"vid": video_set_c[21], "img": neutral_pictures[21], "valence": "neutral", "n": 70, "list": 3}, {"vid": video_set_c[22], "img": neutral_pictures[22], "valence": "neutral", "n": 71, "list": 3}, {"vid": video_set_c[23], "img": neutral_pictures[23], "valence": "neutral", "n": 72, "list": 3}];
+  shuffle(trial_list_mapping_1_block_1)
+  shuffle(trial_list_mapping_1_block_2)
+  shuffle(trial_list_mapping_1_block_3)
+  shuffle(trial_list_mapping_2_block_1)
+  shuffle(trial_list_mapping_2_block_2)
+  shuffle(trial_list_mapping_2_block_3)
+  shuffle(trial_list_mapping_3_block_1)
+  shuffle(trial_list_mapping_3_block_2)
+  shuffle(trial_list_mapping_3_block_3)
   
+  nTrials = trial_list_mapping_1_block_1.length;
+  
+  trialIndex = -1;
+  
+  blockIndex = -1;
+  
+  let a = [1, 2, 3];
+  let i = Math.floor(Math.random() * a.length);
+  let myMapping = a[i];
+  
+  if (myMapping == 1) {blocks=[trial_list_mapping_1_block_1, trial_list_mapping_1_block_1, trial_list_mapping_1_block_1]}
+  if (myMapping == 2) {blocks=[trial_list_mapping_2_block_1, trial_list_mapping_2_block_1, trial_list_mapping_2_block_1]}
+  if (myMapping == 3) {blocks=[trial_list_mapping_3_block_1, trial_list_mapping_3_block_1, trial_list_mapping_3_block_1]}
+  // Initialize components for Routine "block_do"
+  block_doClock = new util.Clock();
+  blockIndex = blockIndex+1
+  trialsList = blocks[blockIndex]
+  // Initialize components for Routine "trial_do"
+  trial_doClock = new util.Clock();
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
   image = new visual.ImageStim({
@@ -334,6 +475,40 @@ function preRoutineEnd(snapshot) {
 }
 
 
+function blocksLoopBegin(blocksLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    blocks = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 3, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: undefined,
+      seed: undefined, name: 'blocks'
+    });
+    psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
+    currentLoop = blocks;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisBlock of blocks) {
+      snapshot = blocks.getSnapshot();
+      blocksLoopScheduler.add(importConditions(snapshot));
+      blocksLoopScheduler.add(block_doRoutineBegin(snapshot));
+      blocksLoopScheduler.add(block_doRoutineEachFrame());
+      blocksLoopScheduler.add(block_doRoutineEnd(snapshot));
+      const trialsLoopScheduler = new Scheduler(psychoJS);
+      blocksLoopScheduler.add(trialsLoopBegin(trialsLoopScheduler, snapshot));
+      blocksLoopScheduler.add(trialsLoopScheduler);
+      blocksLoopScheduler.add(trialsLoopEnd);
+      blocksLoopScheduler.add(blocksLoopEndIteration(blocksLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
 var trials;
 function trialsLoopBegin(trialsLoopScheduler, snapshot) {
   return async function() {
@@ -342,9 +517,9 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     trials = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 5, method: TrialHandler.Method.RANDOM,
+      nReps: 5, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'trial_list_mapping_1_block_1.csv',
+      trialList: undefined,
       seed: undefined, name: 'trials'
     });
     psychoJS.experiment.addLoop(trials); // add the loop to the experiment
@@ -354,6 +529,9 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
     for (const thisTrial of trials) {
       snapshot = trials.getSnapshot();
       trialsLoopScheduler.add(importConditions(snapshot));
+      trialsLoopScheduler.add(trial_doRoutineBegin(snapshot));
+      trialsLoopScheduler.add(trial_doRoutineEachFrame());
+      trialsLoopScheduler.add(trial_doRoutineEnd(snapshot));
       trialsLoopScheduler.add(trialRoutineBegin(snapshot));
       trialsLoopScheduler.add(trialRoutineEachFrame());
       trialsLoopScheduler.add(trialRoutineEnd(snapshot));
@@ -394,6 +572,220 @@ function trialsLoopEndIteration(scheduler, snapshot) {
     return Scheduler.Event.NEXT;
     }
   };
+}
+
+
+async function blocksLoopEnd() {
+  // terminate loop
+  psychoJS.experiment.removeLoop(blocks);
+  // update the current loop from the ExperimentHandler
+  if (psychoJS.experiment._unfinishedLoops.length>0)
+    currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
+  else
+    currentLoop = psychoJS.experiment;  // so we use addData from the experiment
+  return Scheduler.Event.NEXT;
+}
+
+
+function blocksLoopEndIteration(scheduler, snapshot) {
+  // ------Prepare for next entry------
+  return async function () {
+    if (typeof snapshot !== 'undefined') {
+      // ------Check if user ended loop early------
+      if (snapshot.finished) {
+        // Check for and save orphaned data
+        if (psychoJS.experiment.isEntryEmpty()) {
+          psychoJS.experiment.nextEntry(snapshot);
+        }
+        scheduler.stop();
+      } else {
+        psychoJS.experiment.nextEntry(snapshot);
+      }
+    return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+var block_doMaxDurationReached;
+var block_doMaxDuration;
+var block_doComponents;
+function block_doRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'block_do' ---
+    t = 0;
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // keep track of whether this Routine was forcibly ended
+    routineForceEnded = false;
+    block_doClock.reset();
+    routineTimer.reset();
+    block_doMaxDurationReached = false;
+    // update component parameters for each repeat
+    psychoJS.experiment.addData('block_do.started', globalClock.getTime());
+    block_doMaxDuration = null
+    // keep track of which components have finished
+    block_doComponents = [];
+    
+    for (const thisComponent of block_doComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function block_doRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'block_do' ---
+    // get current time
+    t = block_doClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      routineForceEnded = true;
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of block_doComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function block_doRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'block_do' ---
+    for (const thisComponent of block_doComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    psychoJS.experiment.addData('block_do.stopped', globalClock.getTime());
+    // the Routine "block_do" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var trial_doMaxDurationReached;
+var thisTrial;
+var img;
+var vid;
+var trial_doMaxDuration;
+var trial_doComponents;
+function trial_doRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'trial_do' ---
+    t = 0;
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // keep track of whether this Routine was forcibly ended
+    routineForceEnded = false;
+    trial_doClock.reset();
+    routineTimer.reset();
+    trial_doMaxDurationReached = false;
+    // update component parameters for each repeat
+    trialIndex += 1;
+    thisTrial = trialsList[trialIndex];
+    // now expose trial fields as variables you can use in Builder
+    img = thisTrial.img;
+    vid = thisTrial.vid;
+    psychoJS.experiment.addData('trial_do.started', globalClock.getTime());
+    trial_doMaxDuration = null
+    // keep track of which components have finished
+    trial_doComponents = [];
+    
+    for (const thisComponent of trial_doComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function trial_doRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'trial_do' ---
+    // get current time
+    t = trial_doClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      routineForceEnded = true;
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of trial_doComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function trial_doRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'trial_do' ---
+    for (const thisComponent of trial_doComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    psychoJS.experiment.addData('trial_do.stopped', globalClock.getTime());
+    psychoJS.experiment.addData("img", img);
+    psychoJS.experiment.addData("vid", vid);
+    // the Routine "trial_do" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
 }
 
 
